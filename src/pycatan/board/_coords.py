@@ -1,3 +1,6 @@
+import numpy as np
+
+
 class Coords:
     """
     A class used to represent coordinates on the Catan board.
@@ -13,6 +16,7 @@ class Coords:
     def __init__(self, q, r):
         self.q = q
         self.r = r
+        self.coords = np.array([q, r])
 
     def __hash__(self):
         return hash((self.q, self.r))
