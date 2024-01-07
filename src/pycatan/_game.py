@@ -26,7 +26,7 @@ class Game:
             development_card_deck (List[DevelopmentCard]): The deck of development cards
     """
 
-    def __init__(self, board: Board, num_players: Optional[int] = 4):
+    def __init__(self, board: Board, num_players: Optional[int] = 3):
         self.board = board
         self.players = [Player() for i in range(num_players)]
         self.longest_road_owner = None

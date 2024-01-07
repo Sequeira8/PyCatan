@@ -100,7 +100,7 @@ class Board:
         Raises:
             ValueError: If the path_coords are not valid
             CoordsBlockedError: If there is already a building on the path
-            NotConnectedError: If check_connection is true and the building is not connected to anything
+            NotConnectedError: If ensure_connected is true and the building is not connected to anything
         """
         for c in path_coords:
             if c not in self.intersections.keys():
@@ -219,7 +219,7 @@ class Board:
         Raises:
             TooCloseToBuildingError: If the building is too close to another building
             PositionAlreadyTakenError: If the position is already taken
-            NotConnectedError: If `check_connection` is `True` and the settlement is not connected
+            NotConnectedError: If `ensure_connected` is `True` and the settlement is not connected
         """
         # Check that the coords are referencing a intersection
         if coords not in self.intersections:
@@ -531,6 +531,7 @@ class Board:
                     if len(current[1]) + 1 > len(current_longest):
                         current_longest = [path] + current[1]
 
+        player.longest_road = len(current_longest)
         return len(current_longest)
 
     def get_paths_for_intersection_coords(self, coords: Coords) -> Set[Path]:
